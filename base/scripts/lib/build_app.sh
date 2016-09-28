@@ -1,14 +1,9 @@
 set -e
 
-COPIED_APP_PATH=/copied-app
-BUNDLE_DIR=/tmp/bundle-dir
+SRC_DIR=/builds/src
+BUNDLE_DIR=/builds/tmp/bundle-dir
 
-# sometimes, directly copied folder cause some wierd issues
-# this fixes that
-cp -R /app $COPIED_APP_PATH
-cd $COPIED_APP_PATH
-
-meteor build --directory $BUNDLE_DIR --server=http://localhost:3000
+meteor build --architecture=os.linux.x86_64 --server-only --directory $BUNDLE_DIR --server=http://localhost:3000
 
 cd $BUNDLE_DIR/bundle/programs/server/
 npm i
@@ -16,7 +11,7 @@ npm i
 mv $BUNDLE_DIR/bundle /built_app
 
 # cleanup
-rm -rf $COPIED_APP_PATH
+rm -rf $SRC_DIR
 rm -rf $BUNDLE_DIR
 rm -rf ~/.meteor
 rm /usr/local/bin/meteor
