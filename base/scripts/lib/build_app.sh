@@ -1,7 +1,7 @@
 set -e
 
 SRC_DIR=/builds/src
-BUNDLE_DIR=/builds/tmp/bundle-dir
+BUNDLE_DIR=/builds/tmp
 
 meteor build --architecture=os.linux.x86_64 --server-only --directory $BUNDLE_DIR --server=http://localhost:3000
 
