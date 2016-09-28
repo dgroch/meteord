@@ -8,5 +8,5 @@ if [[ $DELAY ]]; then
   sleep $DELAY
 fi
 
-echo "=> Starting meteor app on port:$PORT"
+echo "=> Starting meteor app on port:3000"
 node main.js
